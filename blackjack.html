@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!--Title of the webpage-->
+    <title>Blackjack</title>
+
+    <!--All CSS styling for elements on page-->
+    <style>
+      #myCanvas {
+        position: absolute;
+        background-color: green;
+        top: 50px;
+        left: 600px;
+      }
+
+      #rules {
+        position: absolute;
+        color: white;
+        top: 20px;
+        left: 180px;
+        font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+          "Lucida Sans", Arial, sans-serif;
+      }
+
+      li {
+        color: white;
+        font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+          "Lucida Sans", Arial, sans-serif;
+      }
+
+      ul {
+        position: absolute;
+        top: 70px;
+      }
+
+      #cards {
+        position: absolute;
+        top: 250px;
+        left: 70px;
+      }
+
+      #gameTitle {
+        position: absolute;
+        color: yellow;
+        font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+          "Lucida Sans", Arial, sans-serif;
+        left: 774px;
+        top: 50px;
+        font-size: 48px;
+      }
+
+      button {
+        background-color: #04aa6d;
+        border: none;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        border-radius: 12px;
+        color: yellow;
+        cursor: pointer;
+      }
+
+      #buttons {
+        position: absolute;
+        top: 500px;
+        left: 685px;
+      }
+
+      #aces {
+        position: absolute;
+        color: black;
+        font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+          "Lucida Sans", Arial, sans-serif;
+        top: 150px;
+        left: 840px;
+      }
+
+      #drawn {
+        position: absolute;
+        color: black;
+        font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+          "Lucida Sans", Arial, sans-serif;
+        top: 200px;
+        left: 640px;
+      }
+
+      #sum {
+        position: absolute;
+        color: black;
+        font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+          "Lucida Sans", Arial, sans-serif;
+        top: 230px;
+        left: 640px;
+      }
+
+      #dealerCards {
+        position: absolute;
+        color: black;
+        font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+          "Lucida Sans", Arial, sans-serif;
+        top: 260px;
+        left: 640px;
+      }
+
+      #dealerSum {
+        position: absolute;
+        color: black;
+        font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+          "Lucida Sans", Arial, sans-serif;
+        top: 290px;
+        left: 640px;
+      }
+
+      #end {
+        position: absolute;
+        text-align: center;
+        color: black;
+        font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+          "Lucida Sans", Arial, sans-serif;
+        top: 370px;
+        left: 640px;
+        font-size: 20px;
+      }
+
+      #suits {
+        position: absolute;
+        left: 615px;
+        top: 45px;
+      }
+
+      #suits2 {
+        position: absolute;
+        left: 1045px;
+        top: 45px;
+      }
+    </style>
+
+    <!--The canvas our game will be displayed on-->
+    <canvas id="myCanvas" width="600" height="600"></canvas>
+
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <script src="blackjack.js"></script>
+  </head>
+
+  <body style="background-color: black">
+    <!--Image of cards-->
+    <image
+      id="cards"
+      src="https://pngimg.com/uploads/cards/cards_PNG8471.png"
+      width="400"
+      height="400"
+    >
+    </image>
+
+    <!--Image of the four suits on both sides of title-->
+    <image
+      id="suits"
+      src="https://freesvg.org/img/4suits.png"
+      width="150"
+      height="150"
+    >
+    </image>
+
+    <image
+      id="suits2"
+      src="https://freesvg.org/img/4suits.png"
+      width="150"
+      height="150"
+    >
+    </image>
+
+    <!--Rules heading-->
+    <h1 id="rules">RULES</h1>
+
+    <!--Main game title displayed on game canvas-->
+    <h2 id="gameTitle">BLACKJACK</h2>
+
+    <!--These are the list of rules for the game-->
+    <ul id="listOfRules">
+      <li id="ruleOne">Keep drawing cards keeping track of the sum</li>
+
+      <li id="ruleTwo">
+        The objective is to get as close to 21 as possible without crossing it
+      </li>
+
+      <li id="ruleThree">You have the option to quit at any point</li>
+
+      <li id="ruleFour">
+        The dealer will then play and the closest score to 21 wins
+      </li>
+
+      <li id="ruleFive">Kings, Jacks, and Queens are worth 10 points</li>
+
+      <li id="ruleSix">
+        Aces are either 1 or 11, dealer will announce before round
+      </li>
+    </ul>
+
+    <!--Labels on the canvas for gameplay-->
+
+    <!--this will show if aces are low or high this round-->
+    <h3 id="aces"></h3>
+
+    <!--shows the current card drawn-->
+    <h3 id="drawn"></h3>
+
+    <!--shows the current running sum-->
+    <h3 id="sum"></h3>
+
+    <!--Dealers list of drawn cards-->
+    <h3 id="dealerCards"></h3>
+
+    <!--shows the current running sum-->
+    <h3 id="dealerSum"></h3>
+
+    <!--shows the user that the dealer has won by default-->
+    <h3 id="end"></h3>
+
+    <!--Buttons necessary for game-->
+    <div id="buttons">
+      <button id="start" onclick="setup()">START</button>
+      <button id="draw" onclick="drawCard()">DRAW</button>
+      <button id="drop" onclick="drop()">DROP</button>
+      <button id="quit" onclick="again()">PLAY AGAIN</button>
+    </div>
+  </body>
+</html>
