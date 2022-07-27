@@ -60,8 +60,7 @@ const drawCard = () => {
     document.getElementById("sum").innerHTML = "Your Sum: " + sum;
     // for the player
     if (sum > 21) {
-      document.getElementById("end").innerHTML = 
-        "Dealer wins, you crossed 21";
+      document.getElementById("end").innerHTML = "Dealer wins, you crossed 21";
       // reset button flags
       dropFlag = true;
       play = false;
@@ -91,24 +90,18 @@ const drop = () => {
     }
 
     // set the labels
-    document.getElementById("dealerCards").innerHTML =
-      "Dealer Hand: " + cardList;
-    document.getElementById("dealerSum").innerHTML = 
-      "Dealer Sum: " + dealerSum;
+    document.getElementById("dealerCards").innerHTML = "Dealer Hand: " + cardList;
+    document.getElementById("dealerSum").innerHTML = "Dealer Sum: " + dealerSum;
 
     // end game conditions
     if (dealerSum > 21) {
-      document.getElementById("end").innerHTML =
-        "You win, the dealer crossed 21";
+      document.getElementById("end").innerHTML = "You win, the dealer crossed 21";
     } else if (dealerSum < 21 && dealerSum > sum) {
-      document.getElementById("end").innerHTML =
-        "The Dealer wins, they were closer to 21";
+      document.getElementById("end").innerHTML = "The Dealer wins, they were closer to 21";
     } else if (sum < 21 && sum > dealerSum) {
-      document.getElementById("end").innerHTML =
-        "You win, you were closer to 21";
+      document.getElementById("end").innerHTML = "You win, you were closer to 21";
     } else if (dealerSum === 21) {
-      document.getElementById("end").innerHTML = 
-        "The Dealer wins, they got 21";
+      document.getElementById("end").innerHTML =  "The Dealer wins, they got 21";
     }
   }
 
