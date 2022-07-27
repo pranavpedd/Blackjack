@@ -1,6 +1,5 @@
 // all the cards we could draw from
-const cards = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "JACK", 
-"QUEEN", "KING", "ACE"];
+const cards = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "JACK", "QUEEN", "KING", "ACE"];
 
 // global variables needed for game
 let acesMsg = "", state = "", cardList = "";
