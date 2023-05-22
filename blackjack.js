@@ -1,11 +1,28 @@
 // all the cards we could draw from
-const cards = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "JACK", 
-"QUEEN", "KING", "ACE"];
+const cards = [
+  "2",
+  "3",
+  "4",
+  "5",
+  "6",
+  "7",
+  "8",
+  "9",
+  "10",
+  "JACK",
+  "QUEEN",
+  "KING",
+  "ACE",
+];
 
 // global variables needed for game
-let acesMsg = "", state = "", cardList = "";
+let acesMsg = "",
+  state = "",
+  cardList = "";
 // flags for buttons to control when they are pressed
-let play = false, dropFlag = false, draw = true;
+let play = false,
+  dropFlag = false,
+  draw = true;
 // sum of player cards
 let sum = 0;
 
@@ -14,7 +31,7 @@ const init = () => {
   let highLow = Math.random();
   state = highLow > 0.5 ? "high" : "low";
   acesMsg = state === "high" ? "ACES are high" : "ACES are low";
-  let val = (state === "high") ? 11 : 1;
+  let val = state === "high" ? 11 : 1;
   cardVals.set("ACE", val);
 
   // sets label
@@ -38,8 +55,7 @@ const getCardValues = () => {
   }
 
   // setting all face values to 10 except ACE (special case)
-  for (let i = 9; i <= 11; i++) 
-    cardValues.set(cards[i], 10);
+  for (let i = 9; i <= 11; i++) cardValues.set(cards[i], 10);
 
   return cardValues;
 };
@@ -90,18 +106,22 @@ const drop = () => {
     }
 
     // set the labels
-    document.getElementById("dealerCards").innerHTML = "Dealer Hand: " + cardList;
+    document.getElementById("dealerCards").innerHTML =
+      "Dealer Hand: " + cardList;
     document.getElementById("dealerSum").innerHTML = "Dealer Sum: " + dealerSum;
 
     // end game conditions
     if (dealerSum > 21) {
-      document.getElementById("end").innerHTML = "You win, the dealer crossed 21";
+      document.getElementById("end").innerHTML =
+        "You win, the dealer crossed 21";
     } else if (dealerSum < 21 && dealerSum > sum) {
-      document.getElementById("end").innerHTML = "The Dealer wins, they were closer to 21";
+      document.getElementById("end").innerHTML =
+        "The Dealer wins, they were closer to 21";
     } else if (sum < 21 && sum > dealerSum) {
-      document.getElementById("end").innerHTML = "You win, you were closer to 21";
+      document.getElementById("end").innerHTML =
+        "You win, you were closer to 21";
     } else if (dealerSum === 21) {
-      document.getElementById("end").innerHTML =  "The Dealer wins, they got 21";
+      document.getElementById("end").innerHTML = "The Dealer wins, they got 21";
     }
   }
 
